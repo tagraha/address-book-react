@@ -3,11 +3,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import HomeRoute from '../HomeRoute';
+import PageHome from '../PageHome';
 
-describe('<HomeRoute />', () => {
+describe('should render <PageHome /> correctly', () => {
   test('renders', () => {
-    const wrapper = shallow(<HomeRoute />);
+    const wrapper = shallow(<PageHome />);
     expect(wrapper).toMatchSnapshot();
   });
 });
