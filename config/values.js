@@ -97,6 +97,7 @@ const values = {
     styleSrc: [
       'cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css',
       'fonts.googleapis.com/css',
+      'https://fonts.googleapis.com/',
     ],
   },
 

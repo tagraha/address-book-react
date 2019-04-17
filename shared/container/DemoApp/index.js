@@ -145,6 +145,10 @@ function DemoApp() {
           rel="stylesheet"
           href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"
         />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
       </Helmet>
       <div style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
         <Switch>

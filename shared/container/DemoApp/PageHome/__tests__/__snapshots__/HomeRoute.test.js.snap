@@ -16,5 +16,10 @@ exports[`should render <PageHome /> correctly renders 1`] = `
   <p>
     this is the homepage
   </p>
+  <i
+    class="material-icons"
+  >
+    settings
+  </i>
 </div>
 `;

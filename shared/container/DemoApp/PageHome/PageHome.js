@@ -13,6 +13,9 @@ function PageHome() {
       <h2>{config('welcomeMessage')}</h2>
 
       <p>this is the homepage</p>
+      <i class="material-icons">
+      settings
+      </i>
     </div>
   );
 }
