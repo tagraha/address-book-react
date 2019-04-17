@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AboutRoute /> renders 1`] = `
+exports[`should render <AboutPage /> page correctly renders 1`] = `
 <div
   style={
     Object {
@@ -29,30 +29,6 @@ exports[`<AboutRoute /> renders 1`] = `
     <span>
       Tirta Nugraha (dev.nugrata@gmail.com)
     </span>
-  </p>
-  <p>
-    View our contributors list on our
-     
-    <a
-      href="https://github.com/tagraha/react-start"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      GitHub
-    </a>
-     
-    page.
-  </p>
-  <p>
-    honorable mention
-     
-    <a
-      href="https://github.com/ctrlplusb"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      ctrlplusb
-    </a>
   </p>
 </div>
 `;
