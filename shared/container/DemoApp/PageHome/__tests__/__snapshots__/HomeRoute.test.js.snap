@@ -1,25 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render <PageHome /> correctly renders 1`] = `
-<div>
-  <HelmetWrapper
-    defer={true}
-    encodeSpecialCharacters={true}
-  >
-    <title>
-      Home
-    </title>
-  </HelmetWrapper>
-  <h2>
-    Hello world!
-  </h2>
-  <p>
-    this is the homepage
-  </p>
-  <i
-    class="material-icons"
-  >
-    settings
-  </i>
-</div>
+<WithJob(PageHome)
+  filterKeyword=""
+  filteredUsers={
+    Object {
+      "isShown": false,
+      "results": Array [],
+    }
+  }
+  isError={false}
+  isLoading={false}
+  loadInitialUsers={[Function]}
+  loadUsers={[Function]}
+  onFilterChange={[Function]}
+  removeFilterKeyword={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+  users={Array []}
+/>
 `;
