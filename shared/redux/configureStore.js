@@ -7,12 +7,10 @@ import {
 import thunk from 'redux-thunk';
 import axios from 'axios';
 
-import counter from './modules/counter';
-import post from './modules/post';
+import users from './modules/users';
 
 const reducer = combineReducers({
-  counter,
-  post,
+  users,
 });
 
 function craftMidleware() {

@@ -7,7 +7,6 @@ class SettingPage extends Component {
   }
 
   render() {
-    const { counter } = this.state;
     return (
       <div>
         <h3>

@@ -16,7 +16,7 @@ import PageError404 from './PageError404';
 
 function DemoApp() {
   return (
-    <div style={{ padding: '2rem' }}>
+    <React.Fragment>
       <Helmet>
         <html lang="en" />
         <meta charSet="utf-8" />
@@ -146,19 +146,19 @@ function DemoApp() {
           href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"
         />
         <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </Helmet>
-      <div style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+      <React.Fragment>
         <Switch>
           <Route exact path="/" component={PageHome} />
           <Route path="/setting" component={PageSetting} />
           <Route path="/about" component={PageAbout} />
           <Route component={PageError404} />
         </Switch>
-      </div>
-    </div>
+      </React.Fragment>
+    </React.Fragment>
   );
 }
 
