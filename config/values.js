@@ -85,7 +85,7 @@ const values = {
     connectSrc: [],
     defaultSrc: [],
     fontSrc: ['fonts.googleapis.com/css', 'fonts.gstatic.com'],
-    imgSrc: [],
+    imgSrc: ['https://randomuser.me'],
     mediaSrc: [],
     manifestSrc: [],
     objectSrc: [],
