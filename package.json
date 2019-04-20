@@ -1,6 +1,6 @@
 {
   "name": "address-book-react",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "address book app",
   "main": "build/server/index.js",
   "engines": {
