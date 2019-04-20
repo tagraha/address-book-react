@@ -1,13 +1,13 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withJob } from 'react-jobs';
 import debounce from 'lodash.debounce';
 
-import { loadUsers } from './../../../redux/modules/users';
+import { loadInitialUsers, loadUsers } from './../../../redux/modules/users';
 import UsersCard from '../../../components/UsersCard/UsersCard';
 
 import config from '../../../../config';
@@ -72,6 +72,7 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
+  loadInitialUsers: loadInitialUsers,
   loadUsers: loadUsers
 };
 
@@ -81,7 +82,7 @@ export default compose(
   connect(mapStateToProps, mapActionsToProps),
   withJob({
     work: (
-      { match, users, loadUsers }, // eslint-disable-line
+      { match, users, loadInitialUsers }, // eslint-disable-line
     ) => {
       // naive caching
       if (users.length > 0) {
@@ -89,7 +90,7 @@ export default compose(
       }
       // Execute the redux-thunk powered action that returns a Promise and
       // fetches the users.
-      loadUsers()
+      loadInitialUsers()
       // dont need to trigger the work. unless you need re-render the page with new data
       // ex: navigating from (current page) /article/news-1 to /article/news-2
       // we need to update with news-2 data on the same page/component right? then we need
