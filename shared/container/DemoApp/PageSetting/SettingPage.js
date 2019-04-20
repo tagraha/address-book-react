@@ -45,9 +45,8 @@ class SettingPage extends Component {
         <br/>
         {this.props.config.nationalities.map((value) => {
           return (
-            <React.Fragment>
+            <React.Fragment key={value.countryCode}>
               <input
-                key={value.countryCode}
                 onChange={this.handleCheckboxChange}
                 type="checkbox"
                 id={value.countryCode}

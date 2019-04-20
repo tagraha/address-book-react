@@ -3,6 +3,8 @@ import { usersMock } from './../initialStates';
 
 // Actions
 export const ACTIONS = {
+  APPLY_FILTER: 'users/APPLY_FILTER',
+  REMOVE_FILTER: 'users/REMOVE_FILTER',
   CHANGE_NATIONALITIES_CONFIG: 'users/CHANGE_NATIONALITIES_CONFIG',
   FETCH_USERS: 'users/FETCH_USERS',
   FETCH_USERS_SUCCESS: 'users/FETCH_USERS_SUCCESS',
@@ -112,6 +114,26 @@ export default function reducer(state = usersMock, action = {}) {
         }
       };
     }
+    case ACTIONS.APPLY_FILTER: {
+      return {
+        ...state,
+        filterKeyword : action.payload.filterKeyword,
+        filteredUsers: {
+          isShown: true,
+          results: action.payload.filteredResults,
+        },
+      };
+    }
+    case ACTIONS.REMOVE_FILTER: {
+      return {
+        ...state,
+        filterKeyword: '',
+        filteredUsers: {
+          ...state.filteredUsers,
+          isShown: false,
+        },
+      };
+    }
     default: {
       return state;
     }
@@ -137,6 +159,14 @@ function changeNationalitiesConfig(config) {
 
 function loadInitUsers(users) {
   return { type: ACTIONS.INIT_USERS, payload: users };
+}
+
+function applyFilter(filterPayload) {
+  return { type: ACTIONS.APPLY_FILTER, payload: filterPayload };
+}
+
+function removeFilter() {
+  return { type: ACTIONS.REMOVE_FILTER };
 }
 
 // side effects, only as applicable
@@ -196,11 +226,22 @@ export const loadInitialUsers = () => (dispatch, getState, { axios }) => {
  * @param {string} countryCode - The string (2 char) of the contry code. ex: US or AU.
  * @param {boolean} isChecked - The state of checkbox checked regarding to countryCode param.
  */
-
 export const onNationalitiesChange = (countryCode = null, isChecked = null) => (dispatch, getState) => {
   const config = {
     countryCode: countryCode,
     isChecked: isChecked,
   }
   return dispatch(changeNationalitiesConfig(config));
+}
+
+export const onFilterChange = (users = [], keyword) => (dispatch, getState) => {
+  const filterPayload = {
+    filteredResults: users,
+    filterKeyword: keyword,
+  }
+  return dispatch(applyFilter(filterPayload));
+}
+
+export const removeFilterKeyword = () => (dispatch, getState) => {
+  return dispatch(removeFilter());
 }

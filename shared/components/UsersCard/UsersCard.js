@@ -8,7 +8,7 @@ class UsersCards extends Component {
       <div className="usercard-wrapper">
         <img src={get(user, 'picture.medium')} alt="username" />
         <span>
-          <p>{`${get(user, 'name.title')} ${get(user, 'name.first')}`}</p>
+          <p>{`${get(user, 'name.title')} ${get(user, 'name.first')} ${get(user, 'name.last')}`}</p>
           <p>johnDoeUsername</p>
           <p>john@email.com</p>
         </span>

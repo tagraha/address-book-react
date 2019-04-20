@@ -1,12 +1,17 @@
 export const usersMock = {
   page: 0,
   seed: 'tirta',
+  filterKeyword: '',
   data: {
     isLoading: false,
     isError: false,
     info: {},
     results: [],
     fetchedCount: 0,
+  },
+  filteredUsers: {
+    isShown: false,
+    results: [],
   },
   config: {
     nationalities: [

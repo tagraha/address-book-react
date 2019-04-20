@@ -5,11 +5,15 @@ import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withJob } from 'react-jobs';
-import debounce from 'lodash.debounce';
 
-import { loadInitialUsers, loadUsers } from './../../../redux/modules/users';
+import {
+  loadInitialUsers,
+  loadUsers,
+  onFilterChange,
+  removeFilterKeyword,
+} from './../../../redux/modules/users';
+
 import UsersCard from '../../../components/UsersCard/UsersCard';
-
 import config from '../../../../config';
 
 class PageHome extends React.Component {
@@ -20,9 +24,11 @@ class PageHome extends React.Component {
   componentDidMount() {
     window.addEventListener('scroll', this.handleOnScroll);
   }
+
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleOnScroll);
   }
+
   handleOnScroll() {
     var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
     var scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
@@ -33,10 +39,38 @@ class PageHome extends React.Component {
       this.props.loadUsers();
     }
   }
+
+  handleOnFilter(evt) {
+    const { value } = evt.target;
+    const { users, filteredUsers } = this.props;
+    let filterResults = [];
+
+    if (value.trim().length <= 0) {
+      return this.props.removeFilterKeyword();
+    }
+
+    filterResults = this.filteredUser(users, value);
+    return this.props.onFilterChange(filterResults, value);
+  }
+
+  filteredUser(usersData, keyword) {
+    const userKeyword = new RegExp(keyword, "g");
+    const filteredResults = [];
+    usersData.filter((el) => {
+      const usersDataFullName = el.name.first.concat(' ' + el.name.last);
+      const match = userKeyword.test(usersDataFullName);
+      if (match) {
+        filteredResults.push(el);
+      }
+    });
+
+    return filteredResults;
+  }
+
   render() {
-    const { users } = this.props;
+    const { users, filteredUsers, filterKeyword } = this.props;
     return (
-      <React.Fragment>
+      <div>
         <Helmet>
           <title>Home</title>
         </Helmet>
@@ -49,8 +83,13 @@ class PageHome extends React.Component {
                 <div className="col-xs-12">
                   <div className="box">
                     <h2>{config('welcomeMessage')}</h2>
+                    <input value={filterKeyword} type="text" placeholder="filter" onChange={this.handleOnFilter.bind(this)} />
                     <Link to="/setting">setting</Link>
-                    {users && users.map((value) => (
+                    {users && !filteredUsers.isShown && users.map((value) => (
+                      <UsersCard user={value} key={value.email} />
+                    ))}
+
+                    {filteredUsers.isShown && filteredUsers.results.map((value) => (
                       <UsersCard user={value} key={value.email} />
                     ))}
                   </div>
@@ -60,7 +99,7 @@ class PageHome extends React.Component {
             </div>
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -68,12 +107,16 @@ class PageHome extends React.Component {
 const mapStateToProps = state => ({
   isError: state.users.data.isError,
   isLoading: state.users.data.isLoading,
+  filteredUsers: state.users.filteredUsers,
+  filterKeyword: state.users.filterKeyword,
   users: state.users.data.results,
 });
 
 const mapActionsToProps = {
-  loadInitialUsers: loadInitialUsers,
-  loadUsers: loadUsers
+  loadInitialUsers,
+  loadUsers,
+  onFilterChange,
+  removeFilterKeyword,
 };
 
 PageHome.propTypes = {};
@@ -90,7 +133,7 @@ export default compose(
       }
       // Execute the redux-thunk powered action that returns a Promise and
       // fetches the users.
-      loadInitialUsers()
+      return loadInitialUsers()
       // dont need to trigger the work. unless you need re-render the page with new data
       // ex: navigating from (current page) /article/news-1 to /article/news-2
       // we need to update with news-2 data on the same page/component right? then we need
