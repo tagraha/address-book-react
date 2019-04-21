@@ -16,6 +16,7 @@
 .usercard-wrapper img {
   width: auto;
   height: 90px;
+  cursor: pointer;
 }
 
 .usercard-body {

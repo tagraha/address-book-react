@@ -104,7 +104,11 @@ class UsersCards extends Component {
               <div className="col-xs-12 col-md-6" key={Math.random()}>
                 <div className="box">
                   <div className="usercard-wrapper">
-                    <img src={get(value, 'picture.medium')} alt="username" />
+                    <img
+                      src={get(value, 'picture.medium')}
+                      alt={`${get(value, 'name.first')} picture`}
+                      onClick={this.handleOnModalOpen.bind(this, value)}
+                    />
                     <span className="usercard-body">
                       <p>{`${get(value, 'name.title')}`}</p>
                       <a style={{ cursor: 'pointer' }} onClick={this.handleOnModalOpen.bind(this, value)}>
