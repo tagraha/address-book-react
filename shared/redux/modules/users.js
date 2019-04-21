@@ -200,7 +200,7 @@ function removeFilter() {
 /**
  * Action creator for load more users list
  */
-export const loadUsers = (results = 700) => (dispatch, getState, { axios }) => {
+export const loadUsers = (results = 50) => (dispatch, getState, { axios }) => {
   dispatch(fetchUsers());
   // set current pagination state tree
   const pagination = parseInt(getState().users.page);
