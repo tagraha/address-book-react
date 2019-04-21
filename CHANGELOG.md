@@ -1,3 +1,9 @@
+### 0.2.0 (2019-04-21)
+
+##### Refactors
+
+* **perf:**  make PageHome not to re-render whole thing ([92593a2f](https://github.com/tagraha/address-book-react/commit/92593a2f2c29de4835c6a45f115d47db1e4c55be))
+
 ### 0.1.0 (2019-04-20)
 
 ##### New Features
