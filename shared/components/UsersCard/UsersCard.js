@@ -95,16 +95,18 @@ class UsersCards extends Component {
             <div className="box">
               <div className="usercard-wrapper">
                 <img src={get(value, 'picture.medium')} alt="username" />
-                <span>
-                  <p>{`${get(value, 'name.title')} ${get(value, 'name.first')} ${get(value, 'name.last')}`}</p>
-                  <Highlighter
-                    highlightClassName="highlight-char"
-                    searchWords={[filterKeyword]}
-                    autoEscape={true}
-                    textToHighlight={`${get(value, 'name.title')} ${get(value, 'name.first')} ${get(value, 'name.last')}`}
-                  />
-                  <p>johnDoeUsername</p>
-                  <p>john@email.com</p>
+                <span className="usercard-body">
+                  <p>{`${get(value, 'name.title')}`}</p>
+                  <a style={{ cursor: 'pointer' }} onClick={this.handleOnModalOpen.bind(this, value)}>
+                    <Highlighter
+                      highlightClassName="highlight-char"
+                      searchWords={[filterKeyword]}
+                      autoEscape={true}
+                      textToHighlight={`${get(value, 'name.first')} ${get(value, 'name.last')}`}
+                    />
+                  </a>
+                  <p>{get(value, 'location.state')}</p>
+                  <p>{get(value, 'email')}</p>
                 </span>
               </div>
             </div>

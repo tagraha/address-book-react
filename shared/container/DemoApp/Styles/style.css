@@ -3,9 +3,28 @@
 }
 
 .usercard-wrapper {
-  border: 1px solid #000;
   display: flex;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
   margin-bottom: 24px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  box-shadow: 0px 0px 6px rgb(0, 0, 0, 0.15);
+}
+
+.usercard-wrapper img {
+  width: auto;
+  height: 90px;
+}
+
+.usercard-body {
+  margin-left: 12px;
+}
+
+.usercard-body p {
+  margin-bottom: 0;
+  font-size: 12px;
 }
 
 .highlight-char {
@@ -139,4 +158,5 @@
   z-index: 1;
   position: relative;
   margin-top: 92px;
+  padding: 30px;
 }
