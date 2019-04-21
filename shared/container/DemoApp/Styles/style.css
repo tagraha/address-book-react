@@ -57,7 +57,8 @@
 }
 
 .modal-center {
-  max-width: 50%;
+  max-width: 90%;
+  width: 600px;
 }
 
 .modal-body {
@@ -65,7 +66,7 @@
   background: #fff;
   color: #000;
   height: 300px;
-  width: 600px;
+  width: auto;
   padding: 32px;
 }
 
