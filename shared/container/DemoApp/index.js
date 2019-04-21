@@ -7,7 +7,7 @@ import Helmet from 'react-helmet';
 
 import config from '../../../config';
 
-import './styles/main.css';
+import './Styles/main.css';
 
 import PageHome from './PageHome';
 import PageSetting from './PageSetting';
