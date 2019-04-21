@@ -1,3 +1,13 @@
+#### 0.2.3 (2019-04-21)
+
+##### Bug Fixes
+
+* **node:**  update node version ([3603e18e](https://github.com/tagraha/address-book-react/commit/3603e18e2b136b36c9654e23e9f0f04b06aceb1b))
+
+##### Code Style Changes
+
+* **modal:**  responsive modal ([57604e0e](https://github.com/tagraha/address-book-react/commit/57604e0e5dac28293a89fb639172a1a44e673ca9))
+
 #### 0.2.2 (2019-04-21)
 
 ##### Bug Fixes
