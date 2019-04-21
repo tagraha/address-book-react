@@ -22,15 +22,7 @@ exports[`should render <PageHome /> correctly renders 1`] = `
         <Connect(FilterInput) />
       </div>
     </div>
-    <div
-      className="users-list"
-    >
-      <div
-        className="row around-xs"
-      >
-        <Connect(WithJob(UsersCards)) />
-      </div>
-    </div>
+    <Connect(WithJob(UsersCards)) />
   </div>
 </Fragment>
 `;
