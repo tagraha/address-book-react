@@ -89,7 +89,7 @@ class UsersCards extends Component {
   }
 
   render () {
-    const { filterKeyword, handleOnClick, users } = this.props;
+    const { filterKeyword, users } = this.props;
     return (
       <Fragment>
         <UserModal
@@ -101,7 +101,7 @@ class UsersCards extends Component {
         <div className="users-list">
           <div className="row around-xs">
             {users && users.map((value) => (
-              <div className="col-xs-12 col-md-6" onClick={handleOnClick} key={Math.random()}>
+              <div className="col-xs-12 col-md-6" key={Math.random()}>
                 <div className="box">
                   <div className="usercard-wrapper">
                     <img src={get(value, 'picture.medium')} alt="username" />
