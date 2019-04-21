@@ -1,3 +1,9 @@
+#### 0.2.2 (2019-04-21)
+
+##### Bug Fixes
+
+* **import:**  fix fail import caused by case sensitive ([977f62f7](https://github.com/tagraha/address-book-react/commit/977f62f71cdc4f3b00baaa01d0e6d50ef85e38c2))
+
 #### 0.2.1 (2019-04-21)
 
 ##### New Features
