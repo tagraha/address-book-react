@@ -3,6 +3,7 @@ import { usersMock } from './../initialStates';
 
 // Actions
 export const ACTIONS = {
+  UPDATE_KEYWORD_VALUE: 'users/UPDATE_KEYWORD_VALUE',
   APPLY_FILTER: 'users/APPLY_FILTER',
   REMOVE_FILTER: 'users/REMOVE_FILTER',
   CHANGE_NATIONALITIES_CONFIG: 'users/CHANGE_NATIONALITIES_CONFIG',
@@ -40,6 +41,20 @@ function getCountriesParams(natConfig = null) {
 
   const urlParam = arr.length > 0 ? '&nat=' + arr.join(',') : '';
   return urlParam;
+}
+
+function filterUserHelper(usersData, keyword) {
+  const userKeyword = new RegExp(keyword, "g");
+  const filteredResults = [];
+  usersData.filter((el) => {
+    const usersDataFullName = el.name.first.concat(' ' + el.name.last);
+    const match = userKeyword.test(usersDataFullName);
+    if (match) {
+      filteredResults.push(el);
+    }
+  });
+
+  return filteredResults;
 }
 
 // Reducer
@@ -129,9 +144,15 @@ export default function reducer(state = usersMock, action = {}) {
         ...state,
         filterKeyword: '',
         filteredUsers: {
-          ...state.filteredUsers,
+          results: [],
           isShown: false,
         },
+      };
+    }
+    case ACTIONS.UPDATE_KEYWORD_VALUE: {
+      return {
+        ...state,
+        filterKeyword: action.payload,
       };
     }
     default: {
@@ -161,6 +182,10 @@ function loadInitUsers(users) {
   return { type: ACTIONS.INIT_USERS, payload: users };
 }
 
+function updateKeywordInputValue(keyword) {
+  return { type: ACTIONS.UPDATE_KEYWORD_VALUE, payload: keyword };
+}
+
 function applyFilter(filterPayload) {
   return { type: ACTIONS.APPLY_FILTER, payload: filterPayload };
 }
@@ -175,7 +200,7 @@ function removeFilter() {
 /**
  * Action creator for load more users list
  */
-export const loadUsers = (results = 50) => (dispatch, getState, { axios }) => {
+export const loadUsers = (results = 700) => (dispatch, getState, { axios }) => {
   dispatch(fetchUsers());
   // set current pagination state tree
   const pagination = parseInt(getState().users.page);
@@ -234,9 +259,14 @@ export const onNationalitiesChange = (countryCode = null, isChecked = null) => (
   return dispatch(changeNationalitiesConfig(config));
 }
 
-export const onFilterChange = (users = [], keyword) => (dispatch, getState) => {
+export const updateFilterKeyword = (keyword) => (dispatch, getState) => {
+  return dispatch(updateKeywordInputValue(keyword));
+}
+
+export const onFilterChange = (keyword) => (dispatch, getState) => {
+  const filteredUsersStateTree = filterUserHelper(getState().users.data.results, keyword);
   const filterPayload = {
-    filteredResults: users,
+    filteredResults: filteredUsersStateTree,
     filterKeyword: keyword,
   }
   return dispatch(applyFilter(filterPayload));

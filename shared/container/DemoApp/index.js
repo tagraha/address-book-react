@@ -14,6 +14,8 @@ import PageSetting from './PageSetting';
 import PageAbout from './PageAbout';
 import PageError404 from './PageError404';
 
+import TopNav from '../../components/TopNav/TopNav';
+
 function DemoApp() {
   return (
     <React.Fragment>
@@ -150,14 +152,15 @@ function DemoApp() {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </Helmet>
-      <React.Fragment>
+      <TopNav />
+      <div className="main-app-container">
         <Switch>
           <Route exact path="/" component={PageHome} />
-          <Route path="/setting" component={PageSetting} />
-          <Route path="/about" component={PageAbout} />
+          <Route exact path="/setting" component={PageSetting} />
+          <Route exact path="/about" component={PageAbout} />
           <Route component={PageError404} />
         </Switch>
-      </React.Fragment>
+      </div>
     </React.Fragment>
   );
 }

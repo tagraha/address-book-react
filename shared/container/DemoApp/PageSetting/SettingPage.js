@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
@@ -34,31 +34,37 @@ class SettingPage extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Helmet>
           <title>Setting</title>
         </Helmet>
-        <h3>
-          Setting Page
-        </h3>
-        <Link to="/">Back to Users List</Link>
-        <br/>
-        {this.props.config.nationalities.map((value) => {
-          return (
-            <React.Fragment key={value.countryCode}>
-              <input
-                onChange={this.handleCheckboxChange}
-                type="checkbox"
-                id={value.countryCode}
-                checked={value.isChecked}
-                value={value.countryCode}
-              />
-              <label className="label-inline" htmlFor={value.countryCode}>{value.countryCode}</label>
+
+        <div className="row center-xs">
+          <div className="col-xs-6">
+            <div className="box">
+              <h1>
+                Setting Page
+              </h1>
               <br/>
-            </React.Fragment>
-          )
-        })}
-      </div>
+              {this.props.config.nationalities.map((value) => {
+                return (
+                  <React.Fragment key={value.countryCode}>
+                    <input
+                      onChange={this.handleCheckboxChange}
+                      type="checkbox"
+                      id={value.countryCode}
+                      checked={value.isChecked}
+                      value={value.countryCode}
+                    />
+                    <label className="label-inline" htmlFor={value.countryCode}>{value.countryCode}</label>
+                    <br/>
+                  </React.Fragment>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 };

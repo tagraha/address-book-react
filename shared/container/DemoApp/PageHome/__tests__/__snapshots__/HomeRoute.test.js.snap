@@ -1,51 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render <PageHome /> correctly renders 1`] = `
-<WithJob(PageHome)
-  filterKeyword=""
-  filteredUsers={
-    Object {
-      "isShown": false,
-      "results": Array [],
-    }
-  }
-  isError={false}
-  isLoading={false}
-  loadInitialUsers={[Function]}
-  loadUsers={[Function]}
-  onFilterChange={[Function]}
-  removeFilterKeyword={[Function]}
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
-  storeSubscription={
-    Subscription {
-      "listeners": Object {
-        "clear": [Function],
-        "get": [Function],
-        "notify": [Function],
-        "subscribe": [Function],
-      },
-      "onStateChange": [Function],
-      "parentSub": undefined,
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "unsubscribe": [Function],
-    }
-  }
-  users={Array []}
-/>
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Home
+    </title>
+  </HelmetWrapper>
+  <div
+    className="homepage-wrapper"
+  >
+    <div
+      className="fixed-wrapper"
+    >
+      <div
+        className="search-wrapper"
+      >
+        <Connect(FilterInput) />
+      </div>
+    </div>
+    <div
+      className="users-list"
+    >
+      <div
+        className="row around-xs"
+      >
+        <Connect(WithJob(UsersCards)) />
+      </div>
+    </div>
+  </div>
+</Fragment>
 `;
