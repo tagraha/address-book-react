@@ -20,11 +20,8 @@ class PageHome extends PureComponent {
             </div>
           </div>
 
-          <div className="users-list">
-            <div className="row around-xs">
-              <UsersCard />
-            </div>
-          </div>
+          <UsersCard />
+
         </div>
       </Fragment>
     );

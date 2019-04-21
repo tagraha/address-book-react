@@ -22,6 +22,8 @@ const UserModal = (props) => {
 }
 
 UserModal.propTypes = {
+  closeModal: PropTypes.func,
+  isModalOpen: PropTypes.bool,
   userData: PropTypes.object,
 }
 

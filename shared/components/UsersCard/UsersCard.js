@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Highlighter from "react-highlight-words";
 import get from 'lodash.get';
 
@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withJob } from 'react-jobs';
+
+import UserModal from '../../components/UserModal/UserModal';
 
 import {
   loadInitialUsers,
@@ -45,7 +47,7 @@ class UsersCards extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.users !== this.props.users) {
+    if ((nextProps.users !== this.props.users) || (this.state.isModalDetailOpen !== nextState.isModalDetailOpen)) {
       return true;
     };
 
@@ -89,30 +91,40 @@ class UsersCards extends Component {
   render () {
     const { filterKeyword, handleOnClick, users } = this.props;
     return (
-      <React.Fragment>
-        {users && users.map((value) => (
-          <div className="col-xs-12 col-md-6" onClick={handleOnClick} key={Math.random()}>
-            <div className="box">
-              <div className="usercard-wrapper">
-                <img src={get(value, 'picture.medium')} alt="username" />
-                <span className="usercard-body">
-                  <p>{`${get(value, 'name.title')}`}</p>
-                  <a style={{ cursor: 'pointer' }} onClick={this.handleOnModalOpen.bind(this, value)}>
-                    <Highlighter
-                      highlightClassName="highlight-char"
-                      searchWords={[filterKeyword]}
-                      autoEscape={true}
-                      textToHighlight={`${get(value, 'name.first')} ${get(value, 'name.last')}`}
-                    />
-                  </a>
-                  <p>{get(value, 'location.state')}</p>
-                  <p>{get(value, 'email')}</p>
-                </span>
+      <Fragment>
+        <UserModal
+          isModalOpen={this.state.isModalDetailOpen}
+          userData={this.state.userDetail}
+          closeModal={this.closeModal.bind(this)}
+        />
+
+        <div className="users-list">
+          <div className="row around-xs">
+            {users && users.map((value) => (
+              <div className="col-xs-12 col-md-6" onClick={handleOnClick} key={Math.random()}>
+                <div className="box">
+                  <div className="usercard-wrapper">
+                    <img src={get(value, 'picture.medium')} alt="username" />
+                    <span className="usercard-body">
+                      <p>{`${get(value, 'name.title')}`}</p>
+                      <a style={{ cursor: 'pointer' }} onClick={this.handleOnModalOpen.bind(this, value)}>
+                        <Highlighter
+                          highlightClassName="highlight-char"
+                          searchWords={[filterKeyword]}
+                          autoEscape={true}
+                          textToHighlight={`${get(value, 'name.first')} ${get(value, 'name.last')}`}
+                        />
+                      </a>
+                      <p>{get(value, 'location.state')}</p>
+                      <p>{get(value, 'email')}</p>
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </React.Fragment>
+        </div>
+      </Fragment>
     );
   }
 }
