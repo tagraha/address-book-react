@@ -24,6 +24,7 @@ class UsersCards extends Component {
     this.handleOnScroll = this.handleOnScroll.bind(this);
 
     this.state = {
+      dataLimit: 1000,
       isModalDetailOpen: false,
       userDetail: {
         name: {
@@ -47,7 +48,11 @@ class UsersCards extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if ((nextProps.users !== this.props.users) || (this.state.isModalDetailOpen !== nextState.isModalDetailOpen)) {
+    if (
+      (nextProps.users !== this.props.users) ||
+      (nextState.isModalDetailOpen !== this.state.isModalDetailOpen) ||
+      (nextProps.isLoading !== this.props.isLoading)
+    ) {
       return true;
     };
 
@@ -65,7 +70,9 @@ class UsersCards extends Component {
     var scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
 
     if (scrolledToBottom && !this.props.isLoading) {
-      await this.props.loadUsers();
+      if (this.props.fetchedCount < this.state.dataLimit) {
+        await this.props.loadUsers();
+      }
 
       if (this.props.filterKeyword.trim().length > 0) {
         this.props.onFilterChange(this.props.filterKeyword);
@@ -89,7 +96,7 @@ class UsersCards extends Component {
   }
 
   render () {
-    const { filterKeyword, users } = this.props;
+    const { isLoading, filterKeyword, fetchedCount, users } = this.props;
     return (
       <Fragment>
         <UserModal
@@ -127,6 +134,18 @@ class UsersCards extends Component {
               </div>
             ))}
           </div>
+
+          {isLoading &&
+            <div className="row">
+              <h3>Loading...</h3>
+            </div>
+          }
+
+          {fetchedCount >= this.state.dataLimit &&
+            <div className="row">
+              <h3>thats all the {fetchedCount} data</h3>
+            </div>
+          }
         </div>
       </Fragment>
     );
@@ -134,9 +153,10 @@ class UsersCards extends Component {
 }
 
 const mapStateToProps = state => ({
+  fetchedCount: state.users.data.fetchedCount,
+  filterKeyword: state.users.filterKeyword,
   isError: state.users.data.isError,
   isLoading: state.users.data.isLoading,
-  filterKeyword: state.users.filterKeyword,
   users: state.users.filteredUsers.isShown ? state.users.filteredUsers.results : state.users.data.results,
 });
 
