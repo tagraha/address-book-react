@@ -1,3 +1,27 @@
+#### 0.2.1 (2019-04-21)
+
+##### New Features
+
+* **limit:**  fetch limit to 1000 data ([a8b70fe5](https://github.com/tagraha/address-book-react/commit/a8b70fe50a15c68a247bb08e9d7e50970c7d37bd))
+
+##### Other Changes
+
+* **count:**  update load more user fetch count ([c10eed16](https://github.com/tagraha/address-book-react/commit/c10eed1606e0446ae95489147c3a4a7320c1691a))
+
+##### Refactors
+
+* **props:**  remove undefined props ([1dbe9430](https://github.com/tagraha/address-book-react/commit/1dbe9430f5cb227bce6b802b7e3517078221f6a9))
+* **Modal:**  refactor home html structure ([8bbb0129](https://github.com/tagraha/address-book-react/commit/8bbb01294402dbcaf79479fd469949681f0a5f55))
+
+##### Code Style Changes
+
+* **image:**  make img clickable to open the modal ([9734bd7c](https://github.com/tagraha/address-book-react/commit/9734bd7c337055b93f24fd03bb553579ac417788))
+* **Users Card:**  update users card style ([2f17b46a](https://github.com/tagraha/address-book-react/commit/2f17b46a198feae1f1ccb387f581d07d5005eae9))
+
+##### Tests
+
+* **snapshot:**  update snapshot ([1df038d6](https://github.com/tagraha/address-book-react/commit/1df038d68ca3a56a3cecc5d1384dca586e17a081))
+
 ### 0.2.0 (2019-04-21)
 
 ##### Refactors
