@@ -17,6 +17,10 @@ href="https://david-dm.org/tagraha/address-book-react?type=dev">
 ## Demo
 <a target="_blank" href="https://address-book-react.herokuapp.com/">https://address-book-react.herokuapp.com/</a>
 
+
+### changelog
+<a href="https://github.com/tagraha/address-book-react/blob/master/CHANGELOG.md">Changelog</a>
+
 Heads up
 --------
 We are using react ^16.3.0. You might want to read this ([React v16.3.0: New lifecycles and context API](https://reactjs.org/blog/2018/03/29/react-v-16-3.html)) before starting playing around with this boilerplate.
