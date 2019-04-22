@@ -53,6 +53,11 @@ npm run build
 npm start
 ```
 
+Test script command
+```bash
+npm run test
+```
+
 -------------
 
 The DemoApp
