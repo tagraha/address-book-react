@@ -1,3 +1,15 @@
+#### 0.2.5 (2019-04-22)
+
+##### Other Changes
+
+* **readme:**  update readme ([67f1b291](https://github.com/tagraha/address-book-react/commit/67f1b2913fddc4adeab4baa6875ffafbda494227))
+
+##### Tests
+
+* **action:**  test onFilterChange actions ([f3f2f478](https://github.com/tagraha/address-book-react/commit/f3f2f478a67bc62110c656db8ab57bcb65cfe04d))
+* **users:**  adding test for user loading ([971eff05](https://github.com/tagraha/address-book-react/commit/971eff05a93f0c26b73ba0e5f586f404c1aa2bb1))
+* **jest:**  verbose tests ([ce724364](https://github.com/tagraha/address-book-react/commit/ce724364ce9e99cca6841db8777052f7a5b62682))
+
 #### 0.2.4 (2019-04-22)
 
 ##### Other Changes
