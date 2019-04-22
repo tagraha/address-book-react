@@ -8,14 +8,15 @@ function AboutRoute() {
         <title>About</title>
       </Helmet>
 
-      <p>
+      <p style={{ marginTop: '56px' }}>
         Produced with{' '}
         <span role="img" aria-label="heart">
           ❤️
         </span>
         <br />
-        <span>Tirta Nugraha (dev.nugrata@gmail.com)</span>
-        Github:
+        <div>Tirta Nugraha (dev.nugrata@gmail.com)</div>
+        <br/>
+        Github:&nbsp;
         <a
           href="https://github.com/tagraha/address-book-react"
           target="_blank"
