@@ -21,6 +21,10 @@ href="https://david-dm.org/tagraha/address-book-react?type=dev">
 ### changelog
 <a href="https://github.com/tagraha/address-book-react/blob/master/CHANGELOG.md">Changelog</a>
 
+Q: are we using React Suspense or React Lazy feature?
+A: No, it's a great feature though. Unfortunately, React Suspense is not support for Server Side Rendering at the moment
+you can refer to this doc https://reactjs.org/docs/code-splitting.html
+
 Heads up
 --------
 We are using react ^16.3.0. You might want to read this ([React v16.3.0: New lifecycles and context API](https://reactjs.org/blog/2018/03/29/react-v-16-3.html)) before starting playing around with this boilerplate.
