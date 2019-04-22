@@ -263,7 +263,7 @@ export const updateFilterKeyword = (keyword) => (dispatch, getState) => {
   return dispatch(updateKeywordInputValue(keyword));
 }
 
-export const onFilterChange = (keyword) => (dispatch, getState) => {
+export const onFilterChange = (keyword = '') => (dispatch, getState) => {
   const filteredUsersStateTree = filterUserHelper(getState().users.data.results, keyword);
   const filterPayload = {
     filteredResults: filteredUsersStateTree,
