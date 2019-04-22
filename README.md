@@ -33,7 +33,7 @@ cd address-book-react
 npm install
 ```
 
-at this point make `.env` file on your root directory. you can copy it from `.env_example` file.
+at this point make `.env` file on your root directory. you can copy it from `.env_example` file. after that you can continue run npm script below to start development environtment.
 
 ```bash
 npm run develop
@@ -50,15 +50,58 @@ npm start
 
 -------------
 
-The App
--------
-Navigate to `shared/container/DemoApp` and start exploring the code
+The DemoApp
+-----------
+Notice the `/shared` folder. that's where the DemoApp is located; inside `/container` folder. For the folder name, why is it called `shared`? because it will be used for compiling 2 bundles. `Server side` and `Client side`. `shared` folder is containing redux, components, container, and helper/utils. now let's take a look for `container` folder, shall we?
+
+The main DemoApp is located in `/container/DemoApp/index.js`; we can define our initial metadata, css & js files there. and we can define all the website `route` there. it'll looks like something like this 
+```javascript
+<div className="main-app-container">
+  <Switch>
+    <Route exact path="/" component={PageHome} />
+    <Route exact path="/setting" component={PageSetting} />
+    <Route exact path="/about" component={PageAbout} />
+    <Route component={PageError404} />
+  </Switch>
+</div>
+```
+
+Notice that the default website route (`/`) is rendering `PageHome` Component. here's the content of PageHome Component
+```javascript
+class PageHome extends PureComponent {
+  render() {
+    return (
+      <Fragment>
+        <Helmet>
+          <title>Home</title>
+        </Helmet>
+
+        <div className="homepage-wrapper">
+          <div className="fixed-wrapper">
+            <div className="search-wrapper">
+              <FilterInput />
+            </div>
+          </div>
+
+          <UsersCard />
+
+        </div>
+      </Fragment>
+    );
+  }
+}
+
+export default PageHome
+```
+
+there are no state and props on  `PageHome` component because it's a container level file. the container shouldnt have any state or props in order to avoid unnecessary re-rendering/re-painting the whole page if there's any trivial state/props change.
 
 Configuration
 -------------
 you can configure like disabling SSR mode, renaming service worker file etc with `value.js` file. here's the the quick look of the file
 
 ```javascript
+
 
 const values = {
   clientConfigFilter: {
