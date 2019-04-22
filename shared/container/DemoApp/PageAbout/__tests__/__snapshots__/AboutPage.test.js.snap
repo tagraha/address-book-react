@@ -16,7 +16,13 @@ exports[`should render <AboutPage /> page correctly renders 1`] = `
       About
     </title>
   </HelmetWrapper>
-  <p>
+  <p
+    style={
+      Object {
+        "marginTop": "56px",
+      }
+    }
+  >
     Produced with
      
     <span
@@ -26,9 +32,18 @@ exports[`should render <AboutPage /> page correctly renders 1`] = `
       ❤️
     </span>
     <br />
-    <span>
+    <div>
       Tirta Nugraha (dev.nugrata@gmail.com)
-    </span>
+    </div>
+    <br />
+    Github: 
+    <a
+      href="https://github.com/tagraha/address-book-react"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      https://github.com/tagraha/address-book-react
+    </a>
   </p>
 </div>
 `;
