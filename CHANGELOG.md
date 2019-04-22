@@ -1,3 +1,13 @@
+#### 0.2.4 (2019-04-22)
+
+##### Other Changes
+
+* **regex:**  make keyword filter incasesensitive ([436b95b4](https://github.com/tagraha/address-book-react/commit/436b95b489dc0f53004c2c668c7889cb8648e03e))
+
+##### Tests
+
+* **snapshot:**  update test snapshot for about page ([2435b928](https://github.com/tagraha/address-book-react/commit/2435b9285685aee4af7a62874234e5febe133499))
+
 #### 0.2.3 (2019-04-21)
 
 ##### Bug Fixes
