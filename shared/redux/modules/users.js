@@ -44,7 +44,7 @@ function getCountriesParams(natConfig = null) {
 }
 
 function filterUserHelper(usersData, keyword) {
-  const userKeyword = new RegExp(keyword, "g");
+  const userKeyword = new RegExp(keyword, "gi");
   const filteredResults = [];
   usersData.filter((el) => {
     const usersDataFullName = el.name.first.concat(' ' + el.name.last);
