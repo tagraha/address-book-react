@@ -65,9 +65,15 @@
   cursor: auto;
   background: #fff;
   color: #000;
-  height: 300px;
+  height: auto;
+  max-height: 700px;
   width: auto;
   padding: 32px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .animated {

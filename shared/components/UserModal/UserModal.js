@@ -15,6 +15,10 @@ const UserModal = (props) => {
             <li>{props.userData.phone}</li>
             <li>{props.userData.cell}</li>
           </ul>
+
+          <div className="modal-footer">
+            <button onClick={props.closeModal}>Close</button>
+          </div>
         </div>
       </div>
     </div>
