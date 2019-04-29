@@ -1,3 +1,9 @@
+#### 0.2.6 (2019-04-29)
+
+##### Other Changes
+
+* **Close Button:**  adding clsoe button on modal ([a971d8b5](https://github.com/tagraha/address-book-react/commit/a971d8b52375b97843508160e9877ebc894094d5))
+
 #### 0.2.5 (2019-04-22)
 
 ##### Other Changes
